@@ -1,16 +1,12 @@
 fn create_phone_number(numbers: &[u8]) -> String {
-    let mut i: i8 = 0;
-    let mut num = "".to_string();
-    for n in numbers {
-        let r = match i {
-            0 => format!("(aaa123{}", n),
-            _ => i.to_string(),
-        };
-        i += 1;
-        println!("{} - {}", n, r);
-        num = format!("{}{}", num, r);
-    }
-    return "".into();
+    let mut as_string: String = numbers
+        .iter()
+        .fold("".to_string(), |acc, n| format!("{}{}", acc, n.to_string()));
+    as_string.insert(0, '(');
+    as_string.insert(4, ')');
+    as_string.insert(5, ' ');
+    as_string.insert(9, '-');
+    return as_string;
 }
 
 #[test]
