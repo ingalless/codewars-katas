@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 /// Converts a number to a string representating roman numeral.
 /// Symbol     Value
 /// I          1
@@ -11,6 +13,7 @@
 /// The numerals for 4 (IV) and 9 (IX) are written using subtractive notation,
 /// where the smaller symbol (I) is subtracted from the larger one (V, or X), thus avoiding the clumsier IIII and VIIII.
 /// Subtractive notation is also used for 40 (XL), 90 (XC), 400 (CD) and 900 (CM).[6] These are the only subtractive forms in standard use.
+
 fn num_as_roman(num: i32) -> String {
     try_subtract(num, "".into())
 }
