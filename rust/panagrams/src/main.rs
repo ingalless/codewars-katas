@@ -1,18 +1,16 @@
+use std::collections::HashSet;
+
 fn main() {
     is_pangram("The quick, brown fox jumps over the lazy dog!");
 }
 
 fn is_pangram(s: &str) -> bool {
-    let target: u32 = "abcdefghijklmnopqrstuvwxyz".chars().map(|c| c as u32).sum();
-    let mut chars = s
-        .to_lowercase()
+    s.to_lowercase()
         .chars()
-        .filter(|c| c.is_alphanumeric())
-        .map(|c| c as u32)
-        .collect::<Vec<_>>();
-    chars.sort();
-    chars.dedup();
-    target <= chars.iter().sum::<u32>()
+        .filter(|c| c.is_alphabetic())
+        .collect::<HashSet<char>>()
+        .len()
+        == 26
 }
 
 #[cfg(test)]
