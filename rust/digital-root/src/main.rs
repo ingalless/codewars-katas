@@ -2,20 +2,17 @@ fn main() {
     digital_root(16);
 }
 
-fn recurse(n: i64) -> i64 {
-    let res = n.to_string().chars().fold(0, |acc, c| {
-        let as_num: i64 = c.to_digit(10).expect("liars").into();
-        return acc + as_num;
-    });
-    if n > 9 {
-        recurse(res)
-    } else {
-        res
-    }
-}
-
 fn digital_root(n: i64) -> i64 {
-    recurse(n)
+    let res = n
+        .to_string()
+        .chars()
+        .fold(0, |acc, c| c.to_digit(10).expect("liars") + acc);
+
+    if n > 9 {
+        digital_root(res.into())
+    } else {
+        res.into()
+    }
 }
 
 #[cfg(test)]
