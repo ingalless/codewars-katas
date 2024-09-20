@@ -1,0 +1,9 @@
+#!/bin/bash
+
+command=$1
+katas=$(ls -d -1 "$PWD/"rust/**)
+
+for kata in $katas;
+do
+	cargo $command --manifest-path "$kata/Cargo.toml"
+done
