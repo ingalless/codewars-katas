@@ -1,5 +1,7 @@
 fn summation(n: i32) -> i32 {
     (1..=n).sum()
+    // It turns out there's some maths magic here
+    // n * (n + 1) / 2
 }
 
 #[cfg(test)]
