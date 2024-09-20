@@ -1,0 +1,8 @@
+#!/bin/bash
+
+tests=$(ls -d -1 "$PWD/"rust/**)
+
+for test in $tests;
+do
+	cargo test --manifest-path "$test/Cargo.toml"
+done
